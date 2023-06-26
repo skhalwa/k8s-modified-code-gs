@@ -1,0 +1,14 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - production
+  paths:
+    include:
+      - /backend
+
+pool:
+  vmImage: ubuntu-latest
+
+extends:
+  template: acr-pipeline.yml

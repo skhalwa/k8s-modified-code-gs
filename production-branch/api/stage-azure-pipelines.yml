@@ -1,0 +1,14 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - staging
+  paths:
+    include:
+      - /api
+
+pool:
+  vmImage: ubuntu-latest
+
+extends:
+  template: acr-pipeline.yml
