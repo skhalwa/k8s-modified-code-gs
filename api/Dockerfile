@@ -8,7 +8,7 @@ RUN npm install -g npm@9.7.2
 
 COPY . . 
 
-RUN npm install -g pm2
+RUN npm install -g npm@9.7.2 pm2
 
 EXPOSE 3000
 
