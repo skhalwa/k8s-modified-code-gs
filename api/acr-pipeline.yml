@@ -9,7 +9,7 @@ stages:
       - task: Docker@2
         inputs:
           containerRegistry: 'k8s-connection'
-          repository: 'dev_api'
+          repository: 'dev-api'
           command: 'buildAndPush'
           Dockerfile: '**/api/Dockerfile'
           tags: |
