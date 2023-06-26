@@ -4,7 +4,7 @@ stages:
   jobs:
     - job: dev
       displayName: push to acr
-      condition: eq(variables['Build.SourceBranch'], refs/heads/dev)
+      condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
       steps: 
       - task: Docker@2
         inputs:
