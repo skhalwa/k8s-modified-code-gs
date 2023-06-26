@@ -1,5 +1,5 @@
 stages:
-- stage: creating a image
+- stage: creating-a-image
   displayName: Push to Acr
   jobs:
     - job: dev
