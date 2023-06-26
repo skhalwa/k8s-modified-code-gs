@@ -10,73 +10,73 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-# extends:
-#   template: acr-pipeline.yml
-stages:
-- stage: creating a image
-  displayName: Push to Acr
-  jobs:
-    - job: dev
-      displayName: push to acr
-      condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
-      steps: 
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'k8s-connection'
-          repository: 'dev-api'
-          command: 'buildAndPush'
-          Dockerfile: '**/api/Dockerfile'
-          tags: |
-            $(Build.BuildId)
-            latest
-      - task: CopyFiles@2
-        inputs:
-          SourceFolder: '/home/vsts/work/1/s'
-          Contents: '**'
-          TargetFolder: '/home/vsts/work/1/a'
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
+extends:
+  template: acr-pipeline.yml
+# stages:
+# - stage: creating a image
+#   displayName: Push to Acr
+#   jobs:
+#     - job: dev
+#       displayName: push to acr
+#       condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
+#       steps: 
+#       - task: Docker@2
+#         inputs:
+#           containerRegistry: 'k8s-connection'
+#           repository: 'dev-api'
+#           command: 'buildAndPush'
+#           Dockerfile: '**/api/Dockerfile'
+#           tags: |
+#             $(Build.BuildId)
+#             latest
+#       - task: CopyFiles@2
+#         inputs:
+#           SourceFolder: '/home/vsts/work/1/s'
+#           Contents: '**'
+#           TargetFolder: '/home/vsts/work/1/a'
+#       - task: PublishBuildArtifacts@1
+#         inputs:
+#           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#           ArtifactName: 'drop'
+#           publishLocation: 'Container'
     
     
-    - job: staging
-      displayName: push to acr
-      condition: eq(variables['Build.SourceBranch'], 'refs/heads/staging')
-      steps: 
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'k8s-connection'
-          repository: 'staging_api'
-          command: 'buildAndPush'
-          Dockerfile: '**/api/Dockerfile'
-          tags: |
-            $(Build.BuildId)
-            latest
-      - task: CopyFiles@2
-        inputs:
-          SourceFolder: '/home/vsts/work/1/s'
-          Contents: '**'
-          TargetFolder: '/home/vsts/work/1/a'
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
+#     - job: staging
+#       displayName: push to acr
+#       condition: eq(variables['Build.SourceBranch'], 'refs/heads/staging')
+#       steps: 
+#       - task: Docker@2
+#         inputs:
+#           containerRegistry: 'k8s-connection'
+#           repository: 'staging_api'
+#           command: 'buildAndPush'
+#           Dockerfile: '**/api/Dockerfile'
+#           tags: |
+#             $(Build.BuildId)
+#             latest
+#       - task: CopyFiles@2
+#         inputs:
+#           SourceFolder: '/home/vsts/work/1/s'
+#           Contents: '**'
+#           TargetFolder: '/home/vsts/work/1/a'
+#       - task: PublishBuildArtifacts@1
+#         inputs:
+#           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#           ArtifactName: 'drop'
+#           publishLocation: 'Container'
     
 
-    - job: production
-      displayName: push to acr
-      condition: eq(variables['Build.SourceBranch'], 'refs/heads/production')
-      steps: 
-      - task: CopyFiles@2
-        inputs:
-          SourceFolder: '/home/vsts/work/1/s'
-          Contents: '**'
-          TargetFolder: '/home/vsts/work/1/a'
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
+#     - job: production
+#       displayName: push to acr
+#       condition: eq(variables['Build.SourceBranch'], 'refs/heads/production')
+#       steps: 
+#       - task: CopyFiles@2
+#         inputs:
+#           SourceFolder: '/home/vsts/work/1/s'
+#           Contents: '**'
+#           TargetFolder: '/home/vsts/work/1/a'
+#       - task: PublishBuildArtifacts@1
+#         inputs:
+#           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#           ArtifactName: 'drop'
+#           publishLocation: 'Container'
