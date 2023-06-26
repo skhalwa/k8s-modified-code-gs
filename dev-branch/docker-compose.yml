@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  api:
+    build:
+      context: api/.
+    image: gsvikrant.azurecr.io/api:api
+    container_name: api
+    ports:
+      - "3000:3000"
+    restart: always
+
+  backend:
+    build:  
+      context: backend/.
+    image: gsvikrant.azurecr.io/backend:backend
+    container_name: backend
+    ports:
+      - "4000:4000"
+    restart: always
+
+  node:
+    build:  
+      context: node/.
+    image: gsvikrant.azurecr.io/node:node
+    container_name: node
+    ports:
+      - "5000:5000"
+    restart: always
+    
