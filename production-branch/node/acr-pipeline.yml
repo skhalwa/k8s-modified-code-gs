@@ -1,10 +1,10 @@
 stages:
-- stage: creating a image
+- stage: creating-a-image
   displayName: Push to Acr
   jobs:
     - job: dev
       displayName: push to acr
-      condition: eq(variables['Build.SourceBranch'], refs/heads/dev)
+      condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
       steps: 
       - task: Docker@2
         inputs:
@@ -29,7 +29,7 @@ stages:
     
     - job: staging
       displayName: push to acr
-      condition: eq(variables['Build.SourceBranch'], refs/heads/staging)
+      condition: eq(variables['Build.SourceBranch'], 'refs/heads/staging')
       steps: 
       - task: Docker@2
         inputs:
@@ -54,7 +54,7 @@ stages:
 
     - job: production
       displayName: push to acr
-      condition: eq(variables['Build.SourceBranch'], refs/heads/production)
+      condition: eq(variables['Build.SourceBranch'], 'refs/heads/production')
       steps: 
       - task: CopyFiles@2
         inputs:
