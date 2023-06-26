@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY ./package* ./
 
-RUN npm install -g npm@9.7.2 to update
+RUN npm install -g npm@9.7.2
 
 COPY . . 
 
