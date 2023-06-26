@@ -11,4 +11,4 @@ pool:
   vmImage: ubuntu-latest
 
 extends:
-  template: acr-pipeline.yaml
+  template: acr-pipeline.yml
