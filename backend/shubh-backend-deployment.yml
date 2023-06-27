@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: shubhamgreensight.azurecr.io/newregistry/backend:latest
+        image: dockergreennew.azurecr.io/staging_backend:latest
         imagePullPolicy: Always
         resources:
           limits:
